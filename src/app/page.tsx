@@ -1,12 +1,8 @@
-import Button from "@/components/ui/Button";
-import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { getServerSession } from "next-auth";
+"use client"
 
-const page = async ({}) => {
-  const session = await getServerSession(authOptions);
+import Button from '@/components/ui/Button'
+import { signOut } from 'next-auth/react'
 
-  return <pre>{JSON.stringify(session)}</pre>;
-};
-
-export default page;
+export default function Home() {
+  return <button onClick={() => signOut()}>Sign out</button>
+}

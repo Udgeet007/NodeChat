@@ -1,4 +1,6 @@
 
+
+
 import { Icon, Icons } from "@/components/icons";
 import { authOptions } from "@/lib/auth";
 import { Link } from "lucide-react";
@@ -35,10 +37,10 @@ const Layout = async ({ children }: LayoutProps) => {
   if (!session) notFound();
 
   const unseenRequestCount = (
-    await fetchRedis(
+    (await fetchRedis(
       "smembers",
       `user:${session.user.id}:incoming_friend_requests`
-    ) as User[]
+    )) as User[]
   ).length;
 
   return (
@@ -53,7 +55,7 @@ const Layout = async ({ children }: LayoutProps) => {
         </div>
         <nav className="flex flex-1 flex-col">
           <ul role="list" className="flex flex-1 flex-col gap-y-7">
-            <li> chats that this user has</li>
+            <li>//chats that this user has</li>
             <li>
               <div className="text-xs font-semibold leading-6 text-gray-400">
                 Overview

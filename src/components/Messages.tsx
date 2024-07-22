@@ -1,6 +1,8 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { Message } from "@/lib/validations/message";
+import { timeStamp } from "console";
+import { format } from "path";
 import { FC, useRef, useState } from "react";
 
 interface MessagesProps {
@@ -11,6 +13,10 @@ interface MessagesProps {
 const Messages: FC<MessagesProps> = ({ initialMessages, sessionId }) => {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const scrollDownRef = useRef<HTMLDivElement | null>(null);
+
+  const formatTimestamp = (timeStamp: number) => {
+    return format(timeStamp, 'HH:mm')
+  }
   return (
     <div
       id="messages"
@@ -55,7 +61,7 @@ const Messages: FC<MessagesProps> = ({ initialMessages, sessionId }) => {
                 >
                   {message.text}{" "}
                   <span className="ml-2 text-xs text-gray-400">
-                    {message.timestamp}
+                    {formatTimestamp(message.timestamp)}
                   </span>
                 </span>
               </div>

@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 
     const [userRaw, friendRaw] = (await Promise.all([
       fetchRedis("get", `user:${session.user.id}`),
-      fetchRedis("get", `user${idToAdd}`),
+      fetchRedis("get", `user:${idToAdd}`),
     ])) as [string, string];
 
     const user = JSON.parse(userRaw) as User;

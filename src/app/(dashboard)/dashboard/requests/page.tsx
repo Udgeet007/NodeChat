@@ -4,9 +4,8 @@ import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
-import { FC } from "react";
 
-const page: FC = async () => {
+const page = async () => {
   const session = await getServerSession(authOptions);
   if (!session) notFound();
 
@@ -19,8 +18,8 @@ const page: FC = async () => {
   const incomingFriendRequests = await Promise.all(
     incomingSenderIds.map(async (senderId) => {
       const sender = (await fetchRedis("get", `user:${senderId}`)) as string;
-      const senderParsed = JSON.parse(sender) as User
-   
+      const senderParsed = JSON.parse(sender) as User;
+
       return {
         senderId,
         senderEmail: senderParsed.email,

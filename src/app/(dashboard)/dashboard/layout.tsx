@@ -1,17 +1,18 @@
-import { Icon, Icons } from '@/components/Icons'
+
 import SignOutButton from '@/components/SignOutButton'
 import { authOptions } from '@/lib/auth'
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { FC, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import FriendRequestSidebarOptions from '@/components/FriendRequestSidebarOptions'
 import { fetchRedis } from '@/helpers/redis'
 import { getFriendsByUserId } from '@/helpers/get-friends-by-user-id'
 import SidebarChatList from '@/components/SidebarChatList'
 import MobileChatLayout from '@/components/MobileChatLayout'
 import { SidebarOption } from '@/types/typings'
+import { Icons } from '@/components/Icons'
 
 interface LayoutProps {
   children: ReactNode
